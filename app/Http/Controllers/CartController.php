@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Destination;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
     public function index(){
-        return view('pages.cart');
+        $cart = Cart::with('destinations')->get();
+
+        return view('pages.cart', compact('cart'));
+    }
+
+    public function create(){
+        
+    }
+    public function store(){
+
     }
 }

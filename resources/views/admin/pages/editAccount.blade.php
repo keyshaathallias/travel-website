@@ -5,8 +5,8 @@
     <div class="container-fluid">
       <nav aria-label="breadcrumb" class="breadcrumb-header float-start">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('destination.index') }}">Destination</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Add Destination</li>
+          <li class="breadcrumb-item"><a href="{{ route('account.index') }}">Account</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Edit Account</li>
         </ol>
       </nav>
     </div>
@@ -20,47 +20,50 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Add Destination</h4>
+                  <h4 class="card-title">Edit Account</h4>
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="{{ route('destination.store') }}" method="post" class="form form-horizontal"
-                      enctype="multipart/form-data">
+                    <form action="{{ route('account.update', $user->id) }}" method="post" class="form form-horizontal">
                       @csrf
+                      @method('put')
                       <div class="form-body">
                         <div class="row">
                           <div class="col-md-4">
-                            <label for="image">Image</label>
-                          </div>
-                          <div class="col-md-8 form-group">
-                            <input type="file" id="image" class="form-control" name="image"
-                              placeholder="Upload the image">
-                            @error('image')
-                              <small>{{ $message }}</small>
-                            @enderror
-                          </div>
-                          <div class="col-md-4">
-                            <label for="name">Destination Name</label>
+                            <label for="name">Name</label>
                           </div>
                           <div class="col-md-8 form-group">
                             <input type="text" id="name" class="form-control" name="name"
-                              placeholder="Destination Name">
+                              value="{{ $user->name }}">
                             @error('name')
                               <small>{{ $message }}</small>
                             @enderror
                           </div>
                           <div class="col-md-4">
-                            <label for="ticket_price">Ticket Price (IDR)</label>
+                            <label for="email">Email</label>
                           </div>
                           <div class="col-md-8 form-group">
-                            <input type="number" id="ticket_price" class="form-control" name="ticket_price"
-                              placeholder="Ticket Price">
-                            @error('ticket_price')
+                            <input type="email" id="email" class="form-control" name="email"
+                              value="{{ $user->email }}">
+                            @error('email')
+                              <small>{{ $message }}</small>
+                            @enderror
+                          </div>
+                          <div class="col-md-4">
+                            <label for="roles">Role</label>
+                          </div>
+                          <div class="col-md-8 form-group">
+                            <select id="roles" class="form-select" aria-label="Default select example" name="roles">
+                              <option value="administrator" {{ $user->roles == 'administrator' ? 'selected' : '' }}>
+                                Administrator</option>
+                              <option value="user" {{ $user->roles == 'user' ? 'selected' : '' }}>User</option>
+                            </select>
+                            @error('roles')
                               <small>{{ $message }}</small>
                             @enderror
                           </div>
                           <div class="col-sm-12 d-flex justify-content-end">
-                            <button type="submit" class="mb-1 btn btn-primary me-1">Submit</button>
+                            <button type="submit" class="mb-1 btn btn-primary me-1">Edit</button>
                             <button type="reset" class="mb-1 btn btn-light-secondary me-1">Reset</button>
                           </div>
                         </div>

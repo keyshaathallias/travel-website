@@ -23,8 +23,8 @@ Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/', [LoginController::class, 'login'])->name('login.login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout'); 
 
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/register', [RegisterController::class, 'register_proses'])->name('register.register');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.register');
 
 Route::get('/changepassword', function () {
     return view('pages.changePassword');

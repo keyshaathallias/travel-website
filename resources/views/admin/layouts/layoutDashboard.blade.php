@@ -21,9 +21,16 @@
 <body>
   <script src="/dist/assets/static/js/initTheme.js"></script>
 
-  @include('admin.partials.sidebar')
-  @yield('content')
-  @include('admin.partials.footer')
+  <div id="app">
+    @include('admin.partials.sidebar')
+    <div id="main">
+      <div class="content-header">
+        @include('admin.partials.navbar')
+      </div>
+      @yield('content')
+    </div>
+    @include('admin.partials.footer')
+  </div>
 
   <script src="/dist/assets/static/js/components/dark.js"></script>
   <script src="/dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -36,5 +43,15 @@
 
 </body>
 @include('sweetalert::alert')
+<script>
+  document.getElementById('togglePassword').addEventListener('click', function() {
+    const passwordField = document.getElementById('password');
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+
+    this.classList.toggle('bi-eye-fill');
+    this.classList.toggle('bi-eye-slash-fill');
+  });
+</script>
 
 </html>

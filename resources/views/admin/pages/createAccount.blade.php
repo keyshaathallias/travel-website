@@ -5,8 +5,8 @@
     <div class="container-fluid">
       <nav aria-label="breadcrumb" class="breadcrumb-header float-start">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('destination.index') }}">Destination</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Add Destination</li>
+          <li class="breadcrumb-item"><a href="{{ route('account.index') }}">Account</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Add Account</li>
         </ol>
       </nav>
     </div>
@@ -20,42 +20,55 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">Add Destination</h4>
+                  <h4 class="card-title">Add Account</h4>
                 </div>
                 <div class="card-content">
                   <div class="card-body">
-                    <form action="{{ route('destination.store') }}" method="post" class="form form-horizontal"
-                      enctype="multipart/form-data">
+                    <form action="{{ route('account.store') }}" method="post" class="form form-horizontal">
                       @csrf
                       <div class="form-body">
                         <div class="row">
                           <div class="col-md-4">
-                            <label for="image">Image</label>
+                            <label for="name">Name</label>
                           </div>
                           <div class="col-md-8 form-group">
-                            <input type="file" id="image" class="form-control" name="image"
-                              placeholder="Upload the image">
-                            @error('image')
-                              <small>{{ $message }}</small>
-                            @enderror
-                          </div>
-                          <div class="col-md-4">
-                            <label for="name">Destination Name</label>
-                          </div>
-                          <div class="col-md-8 form-group">
-                            <input type="text" id="name" class="form-control" name="name"
-                              placeholder="Destination Name">
+                            <input type="text" id="name" class="form-control" name="name" placeholder="Name">
                             @error('name')
                               <small>{{ $message }}</small>
                             @enderror
                           </div>
                           <div class="col-md-4">
-                            <label for="ticket_price">Ticket Price (IDR)</label>
+                            <label for="email">Email</label>
                           </div>
                           <div class="col-md-8 form-group">
-                            <input type="number" id="ticket_price" class="form-control" name="ticket_price"
-                              placeholder="Ticket Price">
-                            @error('ticket_price')
+                            <input type="email" id="email" class="form-control" name="email" placeholder="Email">
+                            @error('email')
+                              <small>{{ $message }}</small>
+                            @enderror
+                          </div>
+                          <div class="col-md-4">
+                            <label for="password">Password</label>
+                          </div>
+                          <div class="col-md-8 form-group">
+                            <input type="password" id="password" class="form-control" name="password"
+                              placeholder="Must be at least 6 characters.">
+                            <i class="bi bi-eye-fill absolute top-[45%] right-10 transform cursor-pointer text-secondary"
+                              id="togglePassword"></i>
+                            @error('password')
+                              <small>{{ $message }}</small>
+                            @enderror
+                          </div>
+                          <div class="col-md-4">
+                            <label for="roles">Role</label>
+                          </div>
+                          <div class="col-md-8 form-group">
+                            <select id="roles" class="form-select" aria-label="Default select example" name="roles">
+                              <option selected>Choose Role</option>
+                              <option value="administrator">
+                                Administrator</option>
+                              <option value="user">User</option>
+                            </select>
+                            @error('roles')
                               <small>{{ $message }}</small>
                             @enderror
                           </div>

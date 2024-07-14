@@ -1,8 +1,3 @@
-<footer>
-  <div class="clearfix mb-0 footer text-muted mr-9">
-    <div class="float-end">
-      <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i></span>
-        by <a href="https://keyshaathallias.github.io/" target="_blank">Keysha</a></p>
-    </div>
-  </div>
+<footer class="w-full py-4 text-xs text-center text-secondary">
+  COPYRIGHT © 2024 | <a href="https://keyshaathallias.github.io/" target="_blank" class="text-primary">Keysha Athallia S.</a>
 </footer>

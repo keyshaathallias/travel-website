@@ -27,7 +27,7 @@ class DestinationController extends Controller
 
     public function store(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'image'         => 'required|image|mimes:png,jpg,jpeg',
             'name'          => 'required',
             'ticket_price'  => 'required',
@@ -60,7 +60,7 @@ class DestinationController extends Controller
     {
         $destination = Destination::findOrFail($id);
 
-        $credentials = $request->validate([
+        $request->validate([
             'image'         => 'nullable|image|mimes:png,jpg,jpeg',
             'name'          => 'required',
             'ticket_price'  => 'required',

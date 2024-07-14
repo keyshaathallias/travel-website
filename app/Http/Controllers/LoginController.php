@@ -34,11 +34,6 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request){
-        $title = 'Logout';
-        $text  = 'Are you sure you want to logout?';
-        confirmDelete($title, $text);
-        
-
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

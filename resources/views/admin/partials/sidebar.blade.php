@@ -48,14 +48,14 @@
           </a>
         </li>
 
-        <li class="sidebar-item {{ Request::is('destination') ? 'active' : '' }}">
+        <li class="sidebar-item {{ Request::is('destination', 'destination/create', 'destination/*/edit') ? 'active' : '' }}">
           <a href="{{ route('destination.index') }}" class='sidebar-link'>
             <i class="bi bi-globe-americas"></i>
             <span>Destination</span>
           </a>
         </li>
 
-        <li class="sidebar-item {{ Request::is('account') ? 'active' : '' }}">
+        <li class="sidebar-item {{ Request::is('account', 'account/create', 'account/*/edit') ? 'active' : '' }}">
           <a href="{{ route('account.index') }}" class='sidebar-link'>
             <i class="bi bi-person-fill"></i>
             <span>Account Management</span>

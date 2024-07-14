@@ -25,7 +25,9 @@
 <body class="font-poppins bg-light">
   @include('partials.navbar')
   @yield('content')
+  @include('partials.footer')
 </body>
 @include('sweetalert::alert')
+
 
 </html>
