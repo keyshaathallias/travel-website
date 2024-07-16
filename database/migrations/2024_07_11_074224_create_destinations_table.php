@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('name');
             $table->integer('ticket_price');
+            $table->string('description');
             $table->timestamps();
         });
     }

@@ -7,13 +7,13 @@
         <div class="flex mt-2">
           <li>
             <a href="{{ route('explore.index') }}"
-              class="flex flex-col items-center justify-center transition duration-200 ease-in-out transform text-secondary hover:text-primary {{ Request::is('explore') ? 'text-primary' : 'text-secondary' }}">
+              class="flex flex-col items-center justify-center transition duration-200 ease-in-out transform text-secondary hover:text-primary">
               <span class="text-sm font-medium">Explore</span>
             </a>
           </li>
           <li class="px-16">
-            <a href="{{ route('cart.index') }}"
-              class="flex flex-col items-center justify-center transition duration-200 ease-in-out transform text-secondary hover:text-primary {{ Request::is('cart') ? 'text-primary' : 'text-secondary' }}">
+            <a href="{{ route('cart', Auth()->user()->id) }}"
+              class="flex flex-col items-center justify-center transition duration-200 ease-in-out transform text-secondary hover:text-primary">
               <span class="text-sm font-medium">Cart</span>
             </a>
           </li>
@@ -36,16 +36,14 @@
     <ul class="flex items-center justify-center gap-16 px-16 text-center">
       <li>
         <a href="{{ route('explore.index') }}"
-          class="flex flex-col items-center justify-center text-primary hover:text-dark"
-          {{ Request::is('explore') ? 'text-primary' : 'text-secondary' }}>
+          class="flex flex-col items-center justify-center text-primary hover:text-dark">
           <i class="text-xl bi bi-globe2"></i>
           <span class="text-base">Explore</span>
         </a>
       </li>
       <li>
-        <a href="{{ route('cart.index') }}"
-          class="flex flex-col items-center justify-center text-primary hover:text-dark"
-          {{ Request::is('cart') ? 'text-primary' : 'text-secondary' }}>
+        <a href="{{ route('cart', Auth()->user()->id) }}"
+          class="flex flex-col items-center justify-center text-primary hover:text-dark">
           <i class="text-2xl bi bi-cart4"></i>
           <span class="text-base">Cart</span>
         </a>

@@ -59,6 +59,15 @@
                               <small>{{ $message }}</small>
                             @enderror
                           </div>
+                          <div class="col-md-4">
+                            <label for="description">Description</label>
+                          </div>
+                          <div class="col-md-8 form-group">
+                            <textarea name="description" class="form-control" id="description" cols="20" rows="5"></textarea>
+                          </div>
+                          @error('description')
+                            <small>{{ $message }}</small>
+                          @enderror
                           <div class="col-sm-12 d-flex justify-content-end">
                             <button type="submit" class="mb-1 btn btn-primary me-1">Submit</button>
                             <button type="reset" class="mb-1 btn btn-light-secondary me-1">Reset</button>

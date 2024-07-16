@@ -32,8 +32,13 @@ Route::get('/changepassword', function () {
 
 Route::middleware(['auth'])->group(function(){
     
-    Route::resource('explore', ExploreController::class);
-    Route::resource('cart', CartController::class);
+    Route::get('/explore', [ExploreController::class, 'index'])->name('explore.index');
+    Route::get('/explore/{id}', [ExploreController::class, 'show'])->name('explore.details');
+    Route::post('/add-cart', [ExploreController::class, 'addCart'])->name('add.cart');
+    Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+    Route::get('/cart/{id}', [CartController::class, 'index'])->name('cart.index');
+    Route::delete('/cart/{id}/delete', [CartController::class, 'destroy'])->name('cart.delete');
+    Route::patch('/cart/{id}/update', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 
     Route::middleware('checkrole:administrator')->group(function(){
         Route::resource('destination', DestinationController::class);

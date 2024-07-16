@@ -31,6 +31,7 @@ class DestinationController extends Controller
             'image'         => 'required|image|mimes:png,jpg,jpeg',
             'name'          => 'required',
             'ticket_price'  => 'required',
+            'description'   => 'required',
         ]);
 
         $image = $request->file('image');
@@ -40,6 +41,7 @@ class DestinationController extends Controller
             'image'         => $image->hashName(),
             'name'          => $request->name,
             'ticket_price'  => $request->ticket_price,
+            'description'   => $request->description,
         ]);
 
         return redirect()->route('destination.index')->with('success', 'A New Destination Successfully Added!');
@@ -64,6 +66,7 @@ class DestinationController extends Controller
             'image'         => 'nullable|image|mimes:png,jpg,jpeg',
             'name'          => 'required',
             'ticket_price'  => 'required',
+            'description'   => 'required',
         ]);
 
 
@@ -77,12 +80,14 @@ class DestinationController extends Controller
                 'image'         => $image->hashName(),
                 'name'          => $request->name,
                 'ticket_price'  => $request->ticket_price,
+                'description'   => $request->description,
             ]);
 
         } else {
             $destination->update([
                 'name'          => $request->name,
                 'ticket_price'  => $request->ticket_price,
+                'description'   => $request->description,
             ]);
         }
 

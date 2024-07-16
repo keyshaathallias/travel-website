@@ -12,6 +12,7 @@ class Destination extends Model
     protected $fillable = [
         'image',
         'name',
-        'ticket_price'
+        'ticket_price',
+        'description',
     ];
 }

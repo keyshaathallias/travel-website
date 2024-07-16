@@ -10,13 +10,8 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'destination_id',
-        'full_name',
-        'email',
-        'departure_date',
-        'quantity',
+    protected $guarded = [
+        'id'
     ];
 
     public function user(): BelongsTo
@@ -26,7 +21,7 @@ class Cart extends Model
 
     public function destinations(): BelongsTo
     {
-        return $this->belongsTo(Destination::class);
+        return $this->belongsTo(Destination::class, 'destination_id', 'id');
     }
 
     public function total(): float

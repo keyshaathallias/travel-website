@@ -36,13 +36,14 @@
                       <th>Image</th>
                       <th>Name</th>
                       <th>Ticket Price</th>
+                      <th>Description</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody class="table-responsive">
                     @if ($destinations->isEmpty())
                       <tr>
-                        <td colspan="5" class="text-center">
+                        <td colspan="6" class="text-center">
                           <div class="flex flex-col items-center justify-center text-center">
                             <img src="/img/destination-animate.svg" alt="No Destination Yet" width="300">
                             <p>No Destinations Available Yet</p>
@@ -59,6 +60,7 @@
                           </td>
                           <td>{{ $item->name }}</td>
                           <td>{{ 'Rp ' . number_format($item->ticket_price, 2, ',', '.') }}</td>
+                          <td class="w-[150px]">{{ $item->description }}</td>
                           <td class="">
                             <a href="{{ route('destination.edit', $item->id) }}" class="btn btn-warning"><i
                                 class="bi bi-pencil-fill"></i></a>

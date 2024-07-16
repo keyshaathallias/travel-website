@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('destination_id');
-            $table->string('full_name');
-            $table->string('email');
-            $table->date('departure_date');
-            $table->unsignedInteger('quantity');
+            $table->foreignId('destination_id')->constrained('destinations');
+            $table->foreignId('user_id')->constrained('users');
+            $table->date('departure_date')->nullable();
+            $table->unsignedInteger('quantity')->default(1);
             $table->timestamps();
-            $table->foreign('destination_id')->references('id')->on('destinations');
         });
     }
 
