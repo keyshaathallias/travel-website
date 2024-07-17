@@ -11,7 +11,7 @@
         @endif
       </div>
 
-      <div class="flex flex-wrap justify-center mb-20 lg:mb-2">
+      <div class="flex flex-wrap justify-center mb-28 lg:mb-2">
 
         @if ($cart == null)
           <div class="flex flex-col items-center justify-center mt-5 text-center">
@@ -30,17 +30,27 @@
                 <p class="pb-3 text-xs lg:text-sm">
                   {{ 'Rp ' . number_format($cart->destinations->ticket_price, 2, ',', '.') }}</p>
               </div>
-              <form action="" method="" class="flex items-center gap-4">
-                <button type="submit" href="#"
-                  class="flex items-center px-2 py-1 my-3 transition duration-200 ease-in-out text-dark bg-lightgreen hover:bg-secondary hover:text-white rounded-xl">
-                  <i class="text-xl lg:text-2xl bi bi-dash"></i>
-                </button>
+
+              <div class="flex items-center gap-4">
+                <form action="{{ route('cart.decrease', $cart->id) }}" method="post">
+                  @csrf
+                  @method('PATCH')
+                  <button type="submit"
+                    class="flex items-center px-2 py-1 my-3 transition duration-200 ease-in-out text-dark bg-lightgreen hover:bg-secondary hover:text-white rounded-xl">
+                    <i class="text-xl lg:text-2xl bi bi-dash"></i></button>
+                </form>
+                
                 <p class="text-sm lg:text-base">{{ $cart->quantity }}</p>
-                <button type="submit" href="#"
-                  class="flex items-center px-2 py-1 my-3 mr-3 transition duration-200 ease-in-out text-dark bg-lightgreen hover:bg-secondary hover:text-white rounded-xl">
-                  <i class="text-xl lg:text-2xl bi bi-plus"></i>
-                </button>
-              </form>
+                
+                <form action="{{ route('cart.increase', $cart->id) }}" method="post">
+                  @csrf
+                  @method('PATCH')
+                  <button type="submit"
+                    class="flex items-center px-2 py-1 my-3 transition duration-200 ease-in-out text-dark bg-lightgreen hover:bg-secondary hover:text-white rounded-xl">
+                    <i class="text-xl lg:text-2xl bi bi-plus"></i></button>
+                </form>
+              </div>
+              
               <form action="{{ route('cart.delete', $cart->id) }}" method="post">
                 @csrf
                 @method('DELETE')

@@ -16,11 +16,11 @@
       <div class="row" id="table-striped">
         <div class="col-12">
           <div class="card">
-            <div class="card-header d-flex">
-              <div class="order-last col-12 col-md-6 order-md-1">
+            <div class="flex flex-wrap card-header">
+              <div class="order-first col-12 col-md-6 order-md-1">
                 <h3>Account</h3>
               </div>
-              <div class="order-first col-12 col-md-6 order-md-2">
+              <div class="order-last col-12 col-md-6 order-md-2">
                 <div class="float-start float-lg-end">
                   <a href="{{ route('account.create') }}" class="float-right m-auto btn btn-primary">Add Account</a>
                 </div>
@@ -55,10 +55,10 @@
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td>{{ $user->roles }}</td>
-                          <td class="d-flex">
+                          <td class="">
                             <a href="{{ route('account.edit', $user->id) }}" class="btn btn-warning"><i
                                 class="bi bi-pencil-fill"></i></a>
-                            <a href="{{ route('account.destroy', $user->id) }}" class="btn btn-danger ms-2"
+                            <a href="{{ route('account.destroy', $user->id) }}" class="btn btn-danger lg:ms-2"
                               data-confirm-delete="true">
                               <i class="bi bi-trash3-fill"></i></a>
                           </td>

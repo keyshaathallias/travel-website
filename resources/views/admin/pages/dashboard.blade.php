@@ -41,7 +41,7 @@
               <div class="flex items-center justify-center text-center row">
                 <div class="flex justify-center col-md-4 col-lg-12 col-xl-12 col-xxl-5 ">
                   <div class="mb-2 stats-icon green">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
                       class="bi bi-person-fill" viewBox="0 0 16 16">
                       <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                     </svg>
@@ -62,11 +62,11 @@
         <div class="row" id="table-striped">
           <div class="col-12">
             <div class="card">
-              <div class="card-header d-flex">
-                <div class="order-last col-12 col-md-6 order-md-1">
+              <div class="flex flex-wrap card-header">
+                <div class="order-first col-12 col-md-6 order-md-1">
                   <h3>Destination</h3>
                 </div>
-                <div class="order-first col-12 col-md-6 order-md-2">
+                <div class="order-last col-12 col-md-6 order-md-2">
                   <div class="float-start float-lg-end">
                     <a href="{{ route('destination.create') }}" class="float-right m-auto btn btn-primary">Add
                       Destination</a>
@@ -82,6 +82,7 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Ticket Price</th>
+                        <th>Description</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -100,15 +101,16 @@
                           <tr>
                             <td>{{ $loop->iteration }}.</td>
                             <td>
-                              <img src="{{ asset('storage/img/' . $item->image) }}" style="border-radius: 8px;"
+                              <img src="{{ asset('storage/img/' . $item->image) }}" class="rounded-sm lg:rounded-xl"
                                 width="250px" alt="{{ $item->name }}">
                             </td>
                             <td>{{ $item->name }}</td>
                             <td>{{ 'Rp ' . number_format($item->ticket_price, 2, ',', '.') }}</td>
-                            <td class="">
+                            <td class="w-[150px]">{{ $item->description }}</td>
+                            <td>
                               <a href="{{ route('destination.edit', $item->id) }}" class="btn btn-warning"><i
                                   class="bi bi-pencil-fill"></i></a>
-                              <a href="{{ route('destination.destroy', $item->id) }}" class="btn btn-danger ms-2"
+                              <a href="{{ route('destination.destroy', $item->id) }}" class="btn btn-danger lg:ms-2"
                                 data-confirm-delete="true">
                                 <i class="bi bi-trash3-fill"></i></a>
                             </td>
@@ -130,11 +132,11 @@
         <div class="row" id="table-striped">
           <div class="col-12">
             <div class="card">
-              <div class="card-header d-flex">
-                <div class="order-last col-12 col-md-6 order-md-1">
+              <div class="flex flex-wrap card-header">
+                <div class="order-first col-12 col-md-6 order-md-1">
                   <h3>Account</h3>
                 </div>
-                <div class="order-first col-12 col-md-6 order-md-2">
+                <div class="order-last col-12 col-md-6 order-md-2">
                   <div class="float-start float-lg-end">
                     <a href="#" class="float-right m-auto btn btn-primary">Add Account</a>
                   </div>
@@ -169,10 +171,10 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->roles }}</td>
-                            <td class="d-flex">
+                            <td>
                               <a href="{{ route('account.edit', $user->id) }}" class="btn btn-warning"><i
                                   class="bi bi-pencil-fill"></i></a>
-                              <a href="{{ route('account.destroy', $user->id) }}" class="btn btn-danger ms-2"
+                              <a href="{{ route('account.destroy', $user->id) }}" class="btn btn-danger lg:ms-2"
                                 data-confirm-delete="true">
                                 <i class="bi bi-trash3-fill"></i></a>
                             </td>

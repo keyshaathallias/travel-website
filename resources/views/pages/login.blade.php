@@ -32,8 +32,8 @@
       <a href="{{ route('register') }}" class="text-xs text-left text-gray-500">Don't have an account? <span
           class="transition duration-200 ease-in-out transform text-secondary hover:text-primary">Create
           Account</span></a>
-          <br>
-      <a href="/changepassword" class="text-xs text-left text-gray-500">Forgot Password?</a>
+      <br>
+      <a href="{{ route('forgot.password') }}" class="text-xs text-left text-gray-500">Forgot Password?</a>
     </div>
 
   </form>
