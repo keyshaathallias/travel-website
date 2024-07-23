@@ -39,6 +39,29 @@
           <div class="card">
             <div class="px-4 card-body py-4-5">
               <div class="flex items-center justify-center text-center row">
+                <div class="flex justify-center col-md-4 col-lg-12 col-xl-12 col-xxl-5">
+                  <div class="mb-2 stats-icon red">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                      class="bi bi-credit-card" viewBox="0 0 16 16">
+                      <path
+                        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+                      <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                  <h6 class="font-semibold text-muted">Payment</h6>
+                  <h6 class="mb-0 font-extrabold">{{ number_format($totalPayment) }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="px-4 card-body py-4-5">
+              <div class="flex items-center justify-center text-center row">
                 <div class="flex justify-center col-md-4 col-lg-12 col-xl-12 col-xxl-5 ">
                   <div class="mb-2 stats-icon green">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
@@ -89,7 +112,7 @@
                     <tbody class="table-responsive">
                       @if ($destination->isEmpty())
                         <tr>
-                          <td colspan="5" class="text-center">
+                          <td colspan="6" class="text-center">
                             <div class="flex flex-col items-center justify-center text-center">
                               <img src="/img/destination-animate.svg" alt="No Destination Yet" width="300">
                               <p>No Destinations Available Yet</p>
@@ -120,6 +143,79 @@
                     </tbody>
                   </table>
                   <a href="{{ route('destination.index') }}" class="text-sm">See more data →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Table Data Payment -->
+      <section class="section">
+        <div class="row" id="table-striped">
+          <div class="col-12">
+            <div class="card">
+              <div class="flex flex-wrap card-header">
+                <h3>Payment</h3>
+              </div>
+              <div class="card-body card-content">
+                <div class="table-responsive">
+                  <table class="table mb-3 table-striped table-bordered table-hover">
+                    <thead class="table-responsive">
+                      <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Destination</th>
+                        <th>Ticket Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-responsive">
+                      @if ($payment->isEmpty())
+                        <tr>
+                          <td colspan="9" class="text-center">
+                            <div class="flex flex-col items-center justify-center text-center">
+                              <img src="/img/no-data-animate.svg" alt="No Payment Yet" width="300">
+                              <p>No Payments Available Yet</p>
+                            </div>
+                          </td>
+                        </tr>
+                      @else
+                        @if ($payment->isEmpty())
+                          <tr>
+                            <td colspan="10" class="text-center">
+                              <div class="flex flex-col items-center justify-center text-center">
+                                <img src="/img/no-data-animate.svg" alt="No Payment Yet" width="300">
+                                <p>No Payments Has Been Made Yet</p>
+                              </div>
+                            </td>
+                          </tr>
+                        @else
+                          @foreach ($payment as $payment)
+                            <tr>
+                              <td>{{ $loop->iteration }}.</td>
+                              <td>{{ $payment->user->name }}</td>
+                              <td>{{ $payment->user->email }}</td>
+                              <td>{{ $payment->destination->name }}</td>
+                              <td>{{ 'Rp ' . number_format($payment->destination->ticket_price, 2, ',', '.') }}</td>
+                              <td>{{ $payment->cart->quantity }}</td>
+                              <td>{{ 'Rp ' . number_format($payment->cart->total(), 2, ',', '.') }}</td>
+                              <td>{{ $payment->status }}</td>
+                              <td>
+                                <a href="{{ route('payment.show', $payment->id) }}" class="btn btn-primary"><i
+                                    class="bi bi-eye-fill"></i></a>
+                              </td>
+                            </tr>
+                          @endforeach
+                        @endif
+                      @endif
+                    </tbody>
+                  </table>
+                  <a href="{{ route('payment.index') }}" class="text-sm">See more data →</a>
                 </div>
               </div>
             </div>

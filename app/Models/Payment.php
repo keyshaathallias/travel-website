@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Cart extends Model
+class Payment extends Model
 {
     use HasFactory;
 
@@ -19,18 +19,13 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function destinations(): BelongsTo
+    public function cart(): BelongsTo
     {
-        return $this->belongsTo(Destination::class, 'destination_id', 'id');
+        return $this->belongsTo(Cart::class);
     }
 
-    public function payment()
+    public function destination(): BelongsTo
     {
-        return $this->hasOne(Payment::class);
-    }
-
-    public function total(): float
-    {
-        return $this->quantity * ($this->destinations->ticket_price ?? 0);
+        return $this->belongsTo(Destination::class);
     }
 }

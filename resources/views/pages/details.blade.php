@@ -17,8 +17,15 @@
             <p class="pb-3 text-base">{{ 'Rp ' . number_format($destination->ticket_price, 2, ',', '.') }}</p>
             <p class="mb-1 text-base font-semibold">Description</p>
             <p class="pr-2 text-sm text-gray-600">{{ $destination->description }}</p>
-            @if ($isCart)
-              <form action="{{ route('add.cart') }}" method="post">
+
+            <form action="{{ route('add.cart', $destination->id) }}" method="post">
+              @csrf
+              <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
+              <input type="hidden" name="destination_id" value="{{ $destination->id }}">
+            </form>
+            {{-- @if ($payment->status == 'pending' || $payment->status == null) --}}
+            @if ($isPayment)
+              <form action="{{ route('add.cart', $destination->id) }}" method="post">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
                 <input type="hidden" name="destination_id" value="{{ $destination->id }}">
@@ -29,12 +36,19 @@
                 </button>
               </form>
             @else
-              <a href="{{ route('cart', Auth()->user()->id) }}"
+              <a href="{{ route('cart.history', Auth()->user()->id) }}"
                 class="flex items-center px-3 py-2 my-3 mr-3 text-white transition duration-200 ease-in-out w-fit bg-secondary hover:bg-lightgreen hover:text-primary rounded-xl">
                 <i class="text-2xl bi bi-cart4"></i>
                 <span class="ml-2 text-md">Cart</span>
               </a>
             @endif
+            {{-- @else
+              <a href="{{ route('cart.confirmation', $payment->id) }}"
+                class="flex items-center px-3 py-2 my-3 mr-3 text-white transition duration-200 ease-in-out w-fit bg-secondary hover:bg-lightgreen hover:text-primary rounded-xl">
+                <i class="text-2xl bi bi-cart4"></i>
+                <span class="ml-2 text-md">View E-Voucher</span>
+              </a>
+            @endif --}}
           </div>
         </div>
       </div>

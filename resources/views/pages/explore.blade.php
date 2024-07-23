@@ -7,7 +7,7 @@
       <h1 class="py-2 text-xl font-semibold text-dark">🌎 • Let's discover somewhere awesome!</h1>
     </div>
 
-    <div class="flex flex-wrap items-center mb-20 lg:mb-2">
+    <div class="flex flex-wrap items-center justify-center mb-20 lg:mb-2">
       @if ($destinations->isEmpty())
         <div class="flex flex-col items-center justify-center text-center">
           <img src="/img/destination-animate.svg" alt="No Destination Yet" width="300">

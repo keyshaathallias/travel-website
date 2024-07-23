@@ -54,6 +54,13 @@
             <span>Destination</span>
           </a>
         </li>
+        
+        <li class="sidebar-item {{ Request::is('payment', 'payment/*') ? 'active' : '' }}">
+          <a href="{{ route('payment.index') }}" class='sidebar-link'>
+            <i class="bi bi-credit-card"></i>
+            <span>Payment</span>
+          </a>
+        </li>
 
         <li class="sidebar-item {{ Request::is('account', 'account/create', 'account/*/edit') ? 'active' : '' }}">
           <a href="{{ route('account.index') }}" class='sidebar-link'>
